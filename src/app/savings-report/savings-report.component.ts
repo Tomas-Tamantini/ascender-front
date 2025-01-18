@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, input } from '@angular/core';
 import { BrNumberPipe } from '../shared/br-number.pipe';
 import { CommonModule } from '@angular/common';
 import { SavingsService } from '../savings/savings.service';
@@ -12,11 +12,11 @@ import { Savings } from '../savings/savings.model';
 })
 export class SavingsReportComponent implements OnInit {
   savingsService = inject(SavingsService);
-  clientName = "TTBurger"
+  clientName = input<string>("");
   reportData: Savings[] = [];
 
   ngOnInit() {
-    this.reportData = this.savingsService.savings();
+    this.reportData = this.savingsService.savings(this.clientName());
   }
 
   public totalSavings() {

@@ -6,7 +6,7 @@ import { Savings } from './savings.model';
 })
 export class SavingsService {
 
-  public savings(): Savings[] {
+  public savings(clientName: string): Savings[] {
     return [
       { month: 'Julho', consumption: 5830, cip: 3.38, fioB: null, concessionRate: 0.9926, concessionCost: 5790.06, ascenderRate: 0.83, ascenderCost: 4842.28, savings: 947.78 },
       { month: 'Agosto', consumption: 4950, cip: 3.38, fioB: null, concessionRate: 0.9939, concessionCost: 4923.01, ascenderRate: 0.83, ascenderCost: 4111.88, savings: 811.13 },
