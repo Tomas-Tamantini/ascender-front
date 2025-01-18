@@ -1,7 +1,7 @@
 <div class="container">
   <img src="ascender_logo.png" alt="Ascender" class="logo">
   <h1>Relatório de Consumo de Energia</h1>
-  <h2>Cliente: TTBurger</h2>
+  <h2>Cliente: {{clientName}}</h2>
   <table>
     <thead>
       <tr>
@@ -17,78 +17,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Julho</td>
-        <td>5830</td>
-        <td>3,38</td>
-        <td>-</td>
-        <td>0,9926</td>
-        <td>5790,06</td>
-        <td>0,8300</td>
-        <td>4842,28</td>
-        <td class="highlight">947,78</td>
-      </tr>
-      <tr>
-        <td>Agosto</td>
-        <td>4950</td>
-        <td>3,38</td>
-        <td>-</td>
-        <td>0,9939</td>
-        <td>4923,01</td>
-        <td>0,8300</td>
-        <td>4111,88
-        </td>
-        <td class="highlight">811,13</td>
-      </tr>
-      <tr>
-        <td>Setembro</td>
-        <td>5900</td>
-        <td>541,41</td>
-        <td>-</td>
-        <td>0,9165</td>
-        <td>5948,52</td>
-        <td>0,7700</td>
-        <td>5084,41</td>
-        <td class="highlight">864,11</td>
-      </tr>
-      <tr>
-        <td>Outubro</td>
-        <td>5210</td>
-        <td>541,41</td>
-        <td>-</td>
-        <td>0,9903</td>
-        <td>5701,01</td>
-        <td>0,8300</td>
-        <td>4865,71</td>
-        <td class="highlight">835,30</td>
-      </tr>
-      <tr>
-        <td>Novembro</td>
-        <td>5130</td>
-        <td>541,41</td>
-        <td>196,53</td>
-        <td>0,9633</td>
-        <td>5679,91</td>
-        <td>0,8100</td>
-        <td>4893,24</td>
-        <td class="highlight">786,67</td>
-      </tr>
-      <tr>
-        <td>Dezembro</td>
-        <td>5390</td>
-        <td>541,41</td>
-        <td>193,49</td>
-        <td>0,8794</td>
-        <td>5474,83</td>
-        <td>0,7700</td>
-        <td>4885,20</td>
-        <td class="highlight">589,63</td>
+      <tr *ngFor="let row of reportData">
+        <td>{{ row.month }}</td>
+        <td>{{ row.consumption }}</td>
+        <td>{{ row.cip }}</td>
+        <td>{{ row.fioB }}</td>
+        <td>{{ row.concessionRate }}</td>
+        <td>{{ row.concessionCost }}</td>
+        <td>{{ row.ascenderRate }}</td>
+        <td>{{ row.ascenderCost }}</td>
+        <td class="highlight">{{ row.savings }}</td>
       </tr>
     </tbody>
   </table>
-  <div>
-    <canvas id="consumoChart" width="400" height="200"></canvas>
-  </div>
   <div class="economia-box">
     <strong>Total economizado:</strong> R$ 4834,62<br />
   </div>
