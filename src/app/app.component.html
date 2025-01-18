@@ -19,19 +19,19 @@
     <tbody>
       <tr *ngFor="let row of reportData">
         <td>{{ row.month }}</td>
-        <td>{{ row.consumption }}</td>
-        <td>{{ row.cip }}</td>
-        <td>{{ row.fioB }}</td>
-        <td>{{ row.concessionRate }}</td>
-        <td>{{ row.concessionCost }}</td>
-        <td>{{ row.ascenderRate }}</td>
-        <td>{{ row.ascenderCost }}</td>
-        <td class="highlight">{{ row.savings }}</td>
+        <td>{{ row.consumption | brNumber:0 }}</td>
+        <td>{{ row.cip | brNumber:2 }}</td>
+        <td>{{ row.fioB | brNumber:2 }}</td>
+        <td>{{ row.concessionRate | brNumber:4 }}</td>
+        <td>{{ row.concessionCost | brNumber:2 }}</td>
+        <td>{{ row.ascenderRate | brNumber:4 }}</td>
+        <td>{{ row.ascenderCost | brNumber:2 }}</td>
+        <td class="highlight">{{ row.savings | brNumber:2 }}</td>
       </tr>
     </tbody>
   </table>
   <div class="economia-box">
-    <strong>Total economizado:</strong> R$ {{totalSavings()}}<br />
+    <strong>Total economizado:</strong> R$ {{totalSavings() | brNumber:2 }}<br />
   </div>
   <div class="footer">
     <p>Este relatório foi gerado automaticamente. Caso tenha dúvidas ou
