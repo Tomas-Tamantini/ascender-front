@@ -1,0 +1,41 @@
+<div class="container">
+    <img src="ascender_logo.png" alt="Ascender" class="logo">
+    <h1>Relatório de Consumo de Energia</h1>
+    <h2>Cliente: {{clientName}}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Mês</th>
+                <th>Consumo (kWh)</th>
+                <th>CIP (R$)</th>
+                <th>Fio B (R$)</th>
+                <th>Tarifa Concessionária (R$/kWh)</th>
+                <th>Custo Concessionária (R$)</th>
+                <th>Tarifa Ascender (R$/kWh)</th>
+                <th>Custo Ascender (R$)</th>
+                <th>Economia (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of reportData">
+                <td>{{ row.month }}</td>
+                <td>{{ row.consumption | brNumber:0 }}</td>
+                <td>{{ row.cip | brNumber:2 }}</td>
+                <td>{{ row.fioB | brNumber:2 }}</td>
+                <td>{{ row.concessionRate | brNumber:4 }}</td>
+                <td>{{ row.concessionCost | brNumber:2 }}</td>
+                <td>{{ row.ascenderRate | brNumber:4 }}</td>
+                <td>{{ row.ascenderCost | brNumber:2 }}</td>
+                <td class="highlight">{{ row.savings | brNumber:2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="economia-box">
+        <strong>Total economizado:</strong> R$ {{totalSavings() | brNumber:2 }}<br />
+    </div>
+    <div class="footer">
+        <p>Este relatório foi gerado automaticamente. Caso tenha dúvidas ou
+            precise de mais informações, entre em contato com nossa equipe de atendimento.
+        </p>
+    </div>
+</div>
