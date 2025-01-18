@@ -17,5 +17,9 @@ export class AppComponent {
     { month: 'Novembro', consumption: 5130, cip: 541.41, fioB: 196.53, concessionRate: 0.9633, concessionCost: 5679.91, ascenderRate: 0.81, ascenderCost: 4893.24, savings: 786.67 },
     { month: 'Dezembro', consumption: 5390, cip: 541.41, fioB: 193.49, concessionRate: 0.8794, concessionCost: 5474.83, ascenderRate: 0.77, ascenderCost: 4885.2, savings: 589.63 }
   ];
+
+  public totalSavings() {
+    return this.reportData.reduce((acc, curr) => acc + curr.savings, 0);
+  }
 }
 
