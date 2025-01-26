@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { SavingsReportComponent } from "./savings-report/savings-report.component";
+import { SpreadsheetUploadComponent } from "./spreadsheet-upload/spreadsheet-upload.component";
+import { SavingsReportComponent } from './savings-report/savings-report.component';
 
 @Component({
   selector: 'app-root',
-  imports: [SavingsReportComponent],
+  imports: [SpreadsheetUploadComponent, SavingsReportComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
