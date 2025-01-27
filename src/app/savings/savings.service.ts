@@ -8,6 +8,10 @@ export class SavingsService {
 
   private readonly storedSavings = new Map<string, Savings[]>();
 
+  public getClientIds(): string[] {
+    return Array.from(this.storedSavings.keys());
+  }
+
   public storeSavings(clientName: string, savings: Savings[]) {
     this.storedSavings.set(clientName, savings);
   }

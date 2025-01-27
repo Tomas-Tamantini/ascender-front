@@ -1,2 +1,12 @@
-<app-spreadsheet-upload></app-spreadsheet-upload>
-<app-savings-report clientName="TTBurger"></app-savings-report>
+<app-spreadsheet-upload (spreadsheetLoaded)="onSpreadsheetLoaded()"></app-spreadsheet-upload>
+@if (clientIds().length > 0) {
+<mat-tab-group>
+    @for (clientId of clientIds(); track clientId) {
+    <mat-tab label="{{clientId}}">
+        <ng-template matTabContent>
+            <app-savings-report [clientName]="clientId"></app-savings-report>
+        </ng-template>
+    </mat-tab>
+    }
+</mat-tab-group>
+}

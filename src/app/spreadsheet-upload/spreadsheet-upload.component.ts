@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { SpreadsheetParserService } from './spreadsheet-parser.service';
 
@@ -12,6 +12,7 @@ import { SpreadsheetParserService } from './spreadsheet-parser.service';
 export class SpreadsheetUploadComponent {
 
   private readonly parser = inject(SpreadsheetParserService)
+  spreadsheetLoaded = output<void>();
 
 
   onFileSelected(event: any): void {
@@ -33,6 +34,7 @@ export class SpreadsheetUploadComponent {
         const sheetData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         this.parser.parseSheet(sheetData as unknown[][]);
       });
+      this.spreadsheetLoaded.emit();
     };
 
     reader.readAsArrayBuffer(file);

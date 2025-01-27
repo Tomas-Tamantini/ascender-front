@@ -16,6 +16,10 @@ export class SavingsReportComponent implements OnInit, AfterViewInit {
   clientName = input<string>("");
   reportData: Savings[] = [];
 
+  public chartId() {
+    return `consumoChart-${this.clientName()}`;
+  }
+
   ngOnInit() {
     this.reportData = this.savingsService.savings(this.clientName());
   }
@@ -29,7 +33,7 @@ export class SavingsReportComponent implements OnInit, AfterViewInit {
     const consumption = this.reportData.map(data => data.consumption);
     const savings = this.reportData.map(data => data.savings);
 
-    new Chart('consumoChart', {
+    new Chart(this.chartId(), {
       type: 'bar',
       data: {
         labels: months,
