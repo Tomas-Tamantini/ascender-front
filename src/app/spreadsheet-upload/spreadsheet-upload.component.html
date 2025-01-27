@@ -1,1 +1,6 @@
-<input type="file" accept=".xls,.xlsx" (change)="onFileSelected($event)" />
+<input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+<div class="file-upload">
+    <button mat-raised-button (click)="fileUpload.click()">
+        Selecione o arquivo <mat-icon>attach_file</mat-icon>
+    </button>
+</div>

@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, output } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { SpreadsheetParserService } from './spreadsheet-parser.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-spreadsheet-upload',
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule],
   templateUrl: './spreadsheet-upload.component.html',
   styleUrl: './spreadsheet-upload.component.css'
 })
