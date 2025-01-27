@@ -8,17 +8,19 @@ import { SavingsService } from '../savings/savings.service';
 export class SpreadsheetParserService {
   private readonly savingsService = inject(SavingsService);
 
-  private parseRow(row: Array<string | number | null>): Savings {
+  private parseRow(row: Array<string | number | null>, headerRow: string[]): Savings {
+    const expectedHeaders = ['DATA', 'CONSUMO', 'CIP', 'FIO B', 'TARIFA NEO', 'NEOENERGIA', 'TARIFA USINA', 'USINA', 'ECONOMIA'];
+    const indices = expectedHeaders.map(header => headerRow.indexOf(header));
     return {
-      month: row[0] as string,
-      consumption: row[2] as number,
-      cip: row[4] as number,
-      fioB: row[3] as number | null,
-      concessionRate: row[5] as number,
-      concessionCost: row[6] as number,
-      ascenderRate: row[7] as number,
-      ascenderCost: row[8] as number,
-      savings: row[9] as number
+      month: row[indices[0]] as string,
+      consumption: row[indices[1]] as number,
+      cip: row[indices[2]] as number,
+      fioB: row[indices[3]] as number | null,
+      concessionRate: row[indices[4]] as number,
+      concessionCost: row[indices[5]] as number,
+      ascenderRate: row[indices[6]] as number,
+      ascenderCost: row[indices[7]] as number,
+      savings: row[indices[8]] as number
     }
   }
 
@@ -27,8 +29,9 @@ export class SpreadsheetParserService {
       return
     }
     const clientName: string = data[0][0] as string;
+    const headerRow = data[1] as string[];
     const dataRows: Array<Array<string | number | null>> = data.slice(2) as Array<Array<string | number | null>>;
-    const savings: Savings[] = dataRows.map(row => this.parseRow(row));
+    const savings: Savings[] = dataRows.map(row => this.parseRow(row, headerRow));
     this.savingsService.storeSavings(clientName, savings);
   }
 }
