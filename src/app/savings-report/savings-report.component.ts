@@ -25,7 +25,7 @@ export class SavingsReportComponent implements OnInit, AfterViewInit {
   }
 
   public totalSavings() {
-    return this.reportData.reduce((acc, curr) => acc + curr.savings, 0);
+    return this.reportData.reduce((acc, curr) => acc + (curr.savings ?? 0), 0);
   }
 
   ngAfterViewInit() {

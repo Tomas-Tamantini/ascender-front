@@ -7,6 +7,6 @@ export interface Savings {
     concessionCost: number;
     ascenderRate: number;
     ascenderCost: number;
-    savings: number;
+    savings: number | null;
 }
 
