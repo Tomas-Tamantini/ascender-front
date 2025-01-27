@@ -1,5 +1,7 @@
+@if (clientIds().length === 0 ){
 <app-spreadsheet-upload (spreadsheetLoaded)="onSpreadsheetLoaded()"></app-spreadsheet-upload>
-@if (clientIds().length > 0) {
+}
+@else {
 <mat-tab-group>
     @for (clientId of clientIds(); track clientId) {
     <mat-tab label="{{clientId}}">
